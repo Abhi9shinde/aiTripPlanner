@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete"; //api is paid
 import { Input } from "@/components/ui/input";
 import {
   AI_PROMPT,
@@ -149,18 +148,6 @@ export default function CreateTrip() {
                 handleInputChange("location", v.target.value);
               }}
             />
-            {/* GoogleAutoCompleteError API IS PAID */}
-            {/* <GooglePlacesAutocomplete
-						apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-						libraries={["places_new"]} // ✅ Use "places_new" instead of "places"
-						selectProps={{
-								value: place,
-								onChange: (v) => {
-								setplace(v);
-								console.log("Selected Place:", v);
-								},
-						}}
-						/> */}
           </div>
           {/* Duration*/}
           <div>
