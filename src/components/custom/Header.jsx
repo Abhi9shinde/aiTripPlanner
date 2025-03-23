@@ -60,7 +60,7 @@ export default function Header() {
     googleLogout();
     localStorage.removeItem("user");
     setUser(null);
-    window.location.reload();
+    window.location.href = "/";
   };
 
   return (

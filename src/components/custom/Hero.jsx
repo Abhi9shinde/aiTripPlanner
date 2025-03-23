@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ImageSlider from "./ImageSlider";
-import Footer from "@/view-trip/components/Footer";
 
 export default function Hero() {
   return (
@@ -30,7 +29,6 @@ export default function Hero() {
       <br />
       <br />
       <ImageSlider />
-      <Footer />
     </>
   );
 }

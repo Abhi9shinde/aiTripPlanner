@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import TripInfo from "../components/TripInfo";
 import Hotels from "../components/Hotels";
 import Iternaries from "../components/Iternaries";
-import Footer from "../components/Footer";
 import Loader from "../../components/custom/Loader"; // Adjust path if needed
 
 export default function ViewTrip() {
@@ -49,8 +48,6 @@ export default function ViewTrip() {
 
           {/* Daily Plan  */}
           <Iternaries trip={trip} />
-
-          <Footer />
         </div>
       )}
     </>

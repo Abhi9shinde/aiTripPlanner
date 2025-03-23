@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigation } from "react-router-dom";
 import { toast } from "sonner";
 import TripCard from "./components/TripCard";
-import Footer from "@/view-trip/components/Footer";
 import Loader from "../components/custom/Loader"; // Adjust path if needed
 
 export default function MyTrips() {
@@ -60,7 +59,6 @@ export default function MyTrips() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

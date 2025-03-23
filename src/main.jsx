@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CreateTrip from "./create-trip/CreateTrip";
 import Header from "./components/custom/Header";
+import Footer from "./components/custom/Footer";
 import { Toaster } from "sonner";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ViewTrip from "./view-trip/[tripId]/ViewTrip.jsx";
@@ -35,6 +36,7 @@ createRoot(document.getElementById("root")).render(
       <Header />
       <Toaster position="top-center" />
       <RouterProvider router={router} />
+      <Footer />
     </GoogleOAuthProvider>
   </StrictMode>
 );
