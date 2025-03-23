@@ -87,7 +87,7 @@ export default function Header() {
                   <img
                     src={user.picture}
                     alt="User"
-                    className="h-[35px] w-[35px] rounded-full border border-gray-300 hover:shadow-md"
+                    className="h-[39px] w-[39px] rounded-full border border-gray-300 hover:shadow-md"
                   />
                 </PopoverTrigger>
                 <PopoverContent className="bg-white shadow-lg p-4 rounded-lg w-64 flex flex-col items-center text-center">

@@ -173,8 +173,12 @@ export default function CreateTrip() {
                 <div
                   key={index}
                   onClick={() => handleInputChange("budget", item.title)}
-                  className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer
-										${formData?.budget === item.title ? "shadow-lg border-black" : ""}`}
+                  className={`p-4 border rounded-lg hover:shadow-lg hover:scale-105 cursor-pointer transition-all
+										${
+                      formData?.budget === item.title
+                        ? "text-blue-400 shadow-lg border-black"
+                        : ""
+                    }`}
                 >
                   <h2 className="text-4xl">{item.icon}</h2>
                   <h2 className="font-bold text-lg">{item.title}</h2>
@@ -193,9 +197,9 @@ export default function CreateTrip() {
                 <div
                   key={index}
                   onClick={() => handleInputChange("traveler", item.people)}
-                  className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer ${
+                  className={`p-4 border rounded-lg hover:shadow-lg hover:scale-105 cursor-pointer transition-all ${
                     formData?.traveler === item.people
-                      ? "shadow-lg border-black"
+                      ? "shadow-lg border-black text-blue-400"
                       : ""
                   }`}
                 >
