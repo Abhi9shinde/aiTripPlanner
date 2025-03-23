@@ -7,42 +7,52 @@ import TripInfo from "../components/TripInfo";
 import Hotels from "../components/Hotels";
 import Iternaries from "../components/Iternaries";
 import Footer from "../components/Footer";
+import Loader from "../../components/custom/Loader"; // Adjust path if needed
 
 export default function ViewTrip() {
   const { tripId } = useParams();
   const [trip, setTrip] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    tripId && getTripData();
+    if (tripId) {
+      getTripData();
+    }
   }, [tripId]);
 
-  //Used to get the trip data from the firestore
+  // Fetch trip data from Firestore
   const getTripData = async () => {
     const docRef = doc(db, "aiTrips", tripId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
       setTrip(docSnap.data());
     } else {
-      console.log("No such document!");
       toast.error("No Trip Found");
     }
+    setLoading(false);
   };
+
   return (
     <>
-      <div className="p-10 md:px-20 lg:px-44 xl:px-56 gap-10">
-        {/* Information Section */}
-        {!trip ? <p>Loading...</p> : <TripInfo trip={trip} />}
+      {loading ? (
+        <div className="fixed inset-0 flex items-center justify-center bg-white/75 backdrop-blur-md z-50">
+          <Loader />
+        </div> // Show custom loader while fetching data
+      ) : (
+        <div className="p-10 md:px-20 lg:px-44 xl:px-56 gap-10">
+          {/* Information Section */}
+          <TripInfo trip={trip} />
 
-        {/* Hotels */}
-        <Hotels trip={trip} />
+          {/* Hotels */}
+          <Hotels trip={trip} />
 
-        {/* Daily Plan  */}
-        <Iternaries trip={trip} />
+          {/* Daily Plan  */}
+          <Iternaries trip={trip} />
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      )}
     </>
   );
 }

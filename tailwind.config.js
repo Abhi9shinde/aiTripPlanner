@@ -17,6 +17,17 @@ module.exports = {
       },
     },
     extend: {
+      animation: {
+        heartbeat: "heartbeat 1.2s infinite",
+      },
+      keyframes: {
+        heartbeat: {
+          "0%, 100%": { transform: "scale(1)" },
+          "25%": { transform: "scale(1.1)" },
+          "50%": { transform: "scale(1)" },
+          "75%": { transform: "scale(1.1)" },
+        },
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

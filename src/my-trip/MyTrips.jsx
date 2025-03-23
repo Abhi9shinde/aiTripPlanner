@@ -5,11 +5,12 @@ import { useNavigation } from "react-router-dom";
 import { toast } from "sonner";
 import TripCard from "./components/TripCard";
 import Footer from "@/view-trip/components/Footer";
+import Loader from "../components/custom/Loader"; // Adjust path if needed
 
 export default function MyTrips() {
   const navigation = useNavigation();
-
   const [userTrips, setUserTrips] = useState([]);
+  const [loading, setLoading] = useState(true); // Added loading state
 
   useEffect(() => {
     getUserTrips();
@@ -28,11 +29,14 @@ export default function MyTrips() {
       where("userEmail", "==", user?.email)
     );
     const querySnapshot = await getDocs(q);
+    const trips = [];
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      setUserTrips((prevVal) => [...prevVal, doc.data()]);
+      trips.push(doc.data());
     });
+
+    setUserTrips(trips);
+    setLoading(false); // Set loading to false after fetching data
   };
 
   return (
@@ -40,20 +44,21 @@ export default function MyTrips() {
       <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
         <h2 className="font-bold text-3xl">My Trips</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-10">
-          {userTrips?.length > 0
-            ? userTrips.map((trip, index) => (
+        {loading ? (
+          <div className="fixed inset-0 flex items-center justify-center bg-white/75 backdrop-blur-md z-50">
+            <Loader />
+          </div> // Show loader while fetching data
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-10">
+            {userTrips.length > 0 ? (
+              userTrips.map((trip, index) => (
                 <TripCard trip={trip} key={index} />
               ))
-            : [1, 2, 3, 4, 5, 6].map((item, index) => (
-                <div
-                  key={index}
-                  className="h-[250px] w-full bg-slate-200 rounded-xl animate-pulse"
-                >
-                  {" "}
-                </div>
-              ))}
-        </div>
+            ) : (
+              <p className="text-gray-500">No trips found.</p>
+            )}
+          </div>
+        )}
       </div>
       <Footer />
     </>
