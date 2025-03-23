@@ -16,6 +16,10 @@ import {
 } from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import {
+  FaArrowRightFromBracket,
+  FaArrowRightToBracket,
+} from "react-icons/fa6";
 import axios from "axios";
 
 export default function Header() {
@@ -63,7 +67,7 @@ export default function Header() {
     <>
       <div className="p-3 shadow-md flex justify-between items-center px-5">
         <a href="/">
-          <img src="/logo.svg" alt="Logo" />
+          <img src="/logo.svg" alt="Logo" className="w-40 h-auto" />
         </a>
         <div>
           {user ? (
@@ -99,14 +103,19 @@ export default function Header() {
                     className="mt-3 text-red-500 hover:bg-red-100 w-full"
                     onClick={handleLogout}
                   >
-                    Logout
+                    Logout <FaArrowRightFromBracket />
                   </Button>
                 </PopoverContent>
               </Popover>
             </div>
           ) : (
-            <Button variant="dark" onClick={() => setopenDialog(true)}>
-              Sign In
+            <Button
+              variant="dark"
+              className="font-light"
+              onClick={() => setopenDialog(true)}
+            >
+              Sign In{" "}
+              <FaArrowRightToBracket className="font-extralight text-gray-300" />
             </Button>
           )}
         </div>
@@ -114,7 +123,7 @@ export default function Header() {
           <DialogContent className="max-w-md p-6 bg-white rounded-lg shadow-lg">
             <DialogHeader>
               <DialogDescription>
-                <img src="/logo.svg" />
+                <img src="/logo1.svg" />
                 <h2 className="font-bold text-lg mt-7">Sign In with Google</h2>
                 <p>Sign In to the App with Google Authentication securely</p>
                 <Button

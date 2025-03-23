@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ImageSlider from "./ImageSlider";
+import Footer from "@/view-trip/components/Footer";
 
 export default function Hero() {
   return (
@@ -18,11 +20,17 @@ export default function Hero() {
           iternaries tailored to your interest and budget
         </p>
         <Link to={"/create-trip"}>
-          <Button variant="dark" className="p-5">
-            Get Started for Free
+          <Button variant="dark" className="p-5 font-light">
+            Get Started for Free<span className="text-xl">✨</span>
           </Button>
         </Link>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <ImageSlider />
+      <Footer />
     </>
   );
 }

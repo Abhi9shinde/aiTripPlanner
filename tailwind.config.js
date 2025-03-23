@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       animation: {
         heartbeat: "heartbeat 1.2s infinite",
+        marquee: "marquee var(--duration) infinite linear",
       },
       keyframes: {
         heartbeat: {
@@ -26,6 +27,14 @@ module.exports = {
           "25%": { transform: "scale(1.1)" },
           "50%": { transform: "scale(1)" },
           "75%": { transform: "scale(1.1)" },
+        },
+        marquee: {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(calc(-100% - var(--gap)))",
+          },
         },
       },
       colors: {
