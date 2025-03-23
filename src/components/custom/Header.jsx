@@ -100,7 +100,7 @@ export default function Header() {
                   <p className="text-sm text-gray-500">{user.email}</p>
                   <Button
                     variant="ghost"
-                    className="mt-3 text-red-500 hover:bg-red-100 w-full"
+                    className="mt-3 text-white hover:bg-red-700 hover:text-white w-full bg-red-500"
                     onClick={handleLogout}
                   >
                     Logout <FaArrowRightFromBracket />

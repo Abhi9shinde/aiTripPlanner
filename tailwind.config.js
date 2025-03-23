@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        oswald: ["Oswald", "sans-serif"],
+      },
       animation: {
         heartbeat: "heartbeat 1.2s infinite",
         marquee: "marquee var(--duration) infinite linear",

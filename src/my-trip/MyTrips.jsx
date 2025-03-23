@@ -41,7 +41,7 @@ export default function MyTrips() {
   return (
     <>
       <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
-        <h2 className="font-bold text-3xl">My Trips</h2>
+        <h1 className="font-oswald font-bold text-4xl text-center">My Trips</h1>
 
         {loading ? (
           <div className="fixed inset-0 flex items-center justify-center bg-white/75 backdrop-blur-md z-50">
