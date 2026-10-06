@@ -20,7 +20,13 @@ export default function PlaceCard({ place }) {
           <div>
             <h2 className="font-medium text-lg">{place.placeName}</h2>
             <p className="text-sm text-gray-500">{place.placeDetails}</p>
-            <p className="text-[14px] mt-3">⌚{place.travelTime}</p>
+            <p className="text-[14px] mt-3">⌚{place.timeToTravel}</p>
+            <span>
+              <strong> Best Time:</strong> &nbsp;
+              <strong className="font-bold text-sm text-orange-500">
+                {place.bestTimeToVisit}
+              </strong>
+            </span>
           </div>
         </div>
       </Link>

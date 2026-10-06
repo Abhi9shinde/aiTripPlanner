@@ -58,7 +58,7 @@ export default function CreateTrip() {
       toast.error("!!!! Please fill all the fields");
       return;
     }
-    if (formData?.noOfDays >= 7) {
+    if (formData?.noOfDays >= 15) {
       toast.error("!!!! Please enter a valid number of days");
       return;
     }
@@ -72,11 +72,18 @@ export default function CreateTrip() {
       .replace("{totalDays}", formData?.noOfDays);
 
     //API CALL
-    const result = await chatSession.sendMessage(FINAL_PROMPT);
-    console.log(result?.response?.text());
-    //Save trip data in firebase
-    setloading(false);
-    saveTripData(result?.response?.text());
+    try {
+      const result = await chatSession.sendMessage(FINAL_PROMPT);
+
+      console.log(result.text);
+
+      setloading(false);
+      saveTripData(result.text);
+    } catch (error) {
+      console.error("Gemini API Error:", error);
+      setloading(false);
+      toast.error("Gemini is currently busy. Please try again.");
+    }
   };
 
   //Save trip data in firebase
@@ -111,7 +118,7 @@ export default function CreateTrip() {
             Authorization: `Bearer ${token_info?.access_token}`,
             Accept: "Application/json",
           },
-        }
+        },
       )
       .then((res) => {
         console.log(res);

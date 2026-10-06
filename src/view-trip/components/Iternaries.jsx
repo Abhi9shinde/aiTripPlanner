@@ -14,12 +14,7 @@ export default function Iternaries({ trip }) {
               return (
                 <div key={day}>
                   <h2 className="font-bold text-lg mb-2">{formattedDay}</h2>
-                  <span>
-                    <strong> Time:</strong> &nbsp;
-                    <strong className="font-bold text-sm text-orange-500">
-                      {details.bestTimeToVisit}
-                    </strong>
-                  </span>
+
                   <br />
                   <span>
                     <strong> Theme:</strong> &nbsp;
@@ -28,7 +23,7 @@ export default function Iternaries({ trip }) {
                     </strong>
                   </span>
                   <div className="grid md:grid-cols-2 gap-5">
-                    {details.activities?.map((place, index) => (
+                    {details.places?.map((place, index) => (
                       <div className="my-5">
                         <PlaceCard place={place} />
                       </div>
@@ -38,7 +33,7 @@ export default function Iternaries({ trip }) {
                   <p>Best Time: {details.bestTimeToVisit}</p> */}
                 </div>
               );
-            }
+            },
           )}
         </div>
       </div>
